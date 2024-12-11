@@ -1,4 +1,4 @@
-** This playbook is based of ippsec's parrot-build with a few modifications
+** This playbook is based of ippsec's parrot-build with a few modifications**
 
 ** Make sure to pip install ansible, apt has an older copy **
 
