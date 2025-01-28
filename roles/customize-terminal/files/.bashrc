@@ -37,6 +37,7 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
+
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color) color_prompt=yes;;
@@ -83,8 +84,8 @@ unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
-xterm*|rxvt*|tmux*)
-    VPN=$(ps -ef | grep 'openvpn [eu|au|us|sg]'|tail -1| rev| awk '{print $1}'|rev |sed 's/\..*$//g')
+xterm*|rxvt*|tmux*|tmux-256color*|screen*|screen-256color*)
+    VPN=$(ps -ef | grep 'openvpn [eu|au|us|sg|lab|NTgh0st]'|tail -1| rev| awk '{print $1}'|rev |sed 's/\..*$//g')
     IP=$(ip -4 -o addr show ens33|awk '{print $4}'|sed 's/\/.*$//g')
     if [ ! -z "$VPN" ]; then
       IP=$(ip -4 -o addr show tun0|awk '{print $4}'|sed 's/\/.*$//g')
@@ -116,6 +117,7 @@ alias dd='dd status=progress'
 alias _='sudo'
 alias _i='sudo -i'
 
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -135,3 +137,7 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+
+
+. "$HOME/.cargo/env"
